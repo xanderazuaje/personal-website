@@ -4,6 +4,7 @@ interface Props {
 }
 
 const { title } = Astro.props;
+import 'normalize.css';
 ---
 
 <!doctype html>
@@ -24,19 +25,22 @@ const { title } = Astro.props;
 	</body>
 </html>
 <style is:global>
+    * {
+        box-sizing: border-box;
+    }
 	:root {
         /* Color styles */
         --text: rgba(236, 211, 248, 1);
         --background: rgba(13, 3, 18, 1);
         --accent: rgba(223, 38, 96, 1);
-        --container: rgba(13, 3, 18, 0.800000011920929);
+        --container: rgba(236, 211, 248, 0.05);
         --placeholder: rgba(236, 211, 248, 0.5);
         --primary-hover: rgba(225, 55, 194, 1);
         --buttons----primary: rgba(225, 55, 194, 1);
         --buttons----secondary: rgba(49, 7, 20, 1);
 
         /* Font styles */
-        --text: 'JetBrains Mono', monospace;
+        --body-font: 'JetBrains Mono', monospace;
         --heading: 'Rubik Mono One', sans-serif;
 
         /* Font weights */
@@ -54,12 +58,10 @@ const { title } = Astro.props;
         --body-bold: 1rem;
 
         /* Effect styles */
-        --boxes: ;
         --button-hover:  0px 0px 9.800000190734863px rgba(236, 211, 248, 0.2);
     }
-	html {
-		font-family: var(--text);
-		background: var(--background);
-		background-size: 224px;
+	body {
+		font-family: var(--body-font);
+		background-color: var(--background);
 	}
 </style>
