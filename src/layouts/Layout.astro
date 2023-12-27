@@ -14,6 +14,9 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Rubik+Mono+One&display=swap" rel="stylesheet">
 		<title>{title}</title>
 	</head>
 	<body>
@@ -22,30 +25,41 @@ const { title } = Astro.props;
 </html>
 <style is:global>
 	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
+        /* Color styles */
+        --text: rgba(236, 211, 248, 1);
+        --background: rgba(13, 3, 18, 1);
+        --accent: rgba(223, 38, 96, 1);
+        --container: rgba(13, 3, 18, 0.800000011920929);
+        --placeholder: rgba(236, 211, 248, 0.5);
+        --primary-hover: rgba(225, 55, 194, 1);
+        --buttons----primary: rgba(225, 55, 194, 1);
+        --buttons----secondary: rgba(49, 7, 20, 1);
+
+        /* Font styles */
+        --text: 'JetBrains Mono', monospace;
+        --heading: 'Rubik Mono One', sans-serif;
+
+        /* Font weights */
+        --bold: 700;
+
+        /* Text-size styles */
+        /* base size: body (16px) */
+        --body: 1rem;
+        --h1: 4.21rem;
+        --h2: 3.16rem;
+        --h3: 2.37rem;
+        --h4: 1.78rem;
+        --h5: 1.33rem;
+        --small: 0.75rem;
+        --body-bold: 1rem;
+
+        /* Effect styles */
+        --boxes: ;
+        --button-hover:  0px 0px 9.800000190734863px rgba(236, 211, 248, 0.2);
+    }
 	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
+		font-family: var(--text);
+		background: var(--background);
 		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
 	}
 </style>
