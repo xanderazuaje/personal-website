@@ -1,13 +1,18 @@
-
-
 <nav>
     <span id="clock">HH:MM</span>
-    <span id="menu">Menu</span>
+    <span tabindex="0" id="menu">Menu</span>
+    <ul id="menu-options">
+        <li><a href="#about-me">About me</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="/blog">Blog</a></li>
+    </ul>
 </nav>
 
 <style>
     nav {
         /* Layout */
+        position: relative;
         display: flex;
         width: 100dvw;
         justify-content: space-between;
@@ -26,11 +31,41 @@
         color: var(--buttons----primary);
         cursor: pointer;
         padding: 1.25rem 2.562rem;
-        transition: all 0.2s ease-in-out;   
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0) 50%, var(--buttons----primary) 50%);
+        background-size: 200% 100%;
+        background-position: left bottom;
+        transition: all 0.4s ease;
     }
     #menu:hover {
-        color: var(--background);
-        background: var(--buttons----primary);
+        color: var(--buttons----background);
+        background-position: right bottom;
+    }
+    #menu:focus {
+        color: var(--buttons----background);
+        background-position: right bottom;
+    }
+    #menu-options {
+        max-height: 0;
+        overflow: hidden;
+        position: absolute;
+        list-style: none;
+        padding: 0;
+        top: 100%;
+        right: 0;
+        margin: 0;
+        transition: max-height 0.3s ease;
+    }
+    #menu-options li {
+        background: var(--buttons----secondary);
+        backdrop-filter: blur(5px);
+        padding: 1rem 1.35rem;
+    }
+    #menu-options li a {
+        color: var(--text);
+        text-decoration: none;
+    }
+    #menu:focus-within + #menu-options {
+        max-height: 500px;
     }
 </style>
 
