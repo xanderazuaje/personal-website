@@ -36,3 +36,16 @@
         color: var(--text);
     }
 </style>
+
+<script>
+    import gsap from 'gsap';
+    import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from('section', {
+        y: -150,
+        duration: 1,
+        opacity: 0,
+        ease: 'power3.out',
+    });
+</script>
