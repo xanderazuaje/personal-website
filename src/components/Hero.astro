@@ -1,4 +1,4 @@
-<section>
+<section id="hero">
     <span id="greet">Hi, my name is</span>
     <h1>Xander</h1>
     <h2>Software Developer</h2>
@@ -11,9 +11,8 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 100vh;
         text-align: center;
-        gap: 10px;
+        gap: 0.6rem;
     }
     #greet {
         font-size: var(--body);
@@ -37,15 +36,3 @@
     }
 </style>
 
-<script>
-    import gsap from 'gsap';
-    import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-    gsap.registerPlugin(ScrollTrigger);
-
-    gsap.from('section', {
-        y: -150,
-        duration: 1,
-        opacity: 0,
-        ease: 'power3.out',
-    });
-</script>
