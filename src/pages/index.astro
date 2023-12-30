@@ -5,9 +5,10 @@ import Hero from '../components/Hero.astro';
 import Greeter from '../components/Greeter.astro';
 import Separator from '../components/Separator.astro';
 import Job from '../components/Job.tsx';
+import Project from '../components/Project.astro';
 
+import type { jobI, project_t } from '../utils/copy';
 import { copy } from '../utils/copy';
-import type { jobI } from '../utils/copy';
 ---
 
 <Layout title="Developer Xander Azuaje">
@@ -30,6 +31,18 @@ import type { jobI } from '../utils/copy';
             />
         ))}
     </section>
+    <Separator title="Projects" number="2" />
+    <section id="projects">
+        {copy.projects.map((project: project_t) => (
+            <Project
+                title={project.title}
+                description={project.description}
+                image={project.image}
+                technologies={project.technologies}
+                url={project.url}
+            />
+        ))}
+    </section>
 </Layout>
 
 <style>
@@ -39,8 +52,9 @@ import type { jobI } from '../utils/copy';
         align-items: center;
         justify-content: space-between;
         height: 100vh;
+        min-height: 720px;
     }
-    #job-experience {
+    #job-experience, #projects {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
         justify-items: center;
@@ -59,7 +73,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Animate Hero
 gsap.from('#hero', {
-    scrollTrigger: '#hero', // start the animation when '#hero' enters the viewport
+    scrollTrigger: '#hero',
     y: -150,
     duration: 0.3,
     opacity: 0,
@@ -68,7 +82,7 @@ gsap.from('#hero', {
 
 // Animate Greeter
 gsap.from('#greeter', {
-    scrollTrigger: '#greeter', // start the animation when '#greeter' enters the viewport
+    scrollTrigger: '#greeter',
     y: 150,
     duration: 1,
     opacity: 0,
@@ -77,7 +91,10 @@ gsap.from('#greeter', {
 
 // Animate Separator
 gsap.from('#separator-1', {
-    scrollTrigger: '#separator-1', // start the animation when '#separator-1' enters the viewport
+    scrollTrigger: {
+        trigger: '#separator-1',
+        start: 'top 80%',
+    },
     scaleY: 0,
     duration: 0.5,
     opacity: 0,
@@ -87,8 +104,29 @@ gsap.from('#separator-1', {
 // Animate Job Experience
 gsap.from('.job-experience', {
     scrollTrigger: {
-        trigger: '#job-experience', // start the animation when '#job-experience' enters the viewport
-        start: 'top bottom', // when the top of '#job-experience' hits the bottom of the viewport
+        trigger: '#job-experience',
+        start: 'top 80%',
+    },
+    scale: 0,
+    duration: 0.3,
+    opacity: 0,
+    ease: 'power3.out',
+    stagger: 0.2,
+});
+gsap.from('#separator-2', {
+    scrollTrigger: {
+        trigger: '#separator-2',
+        start: 'top bottom',
+    },
+    scaleY: 0,
+    duration: 0.5,
+    opacity: 0,
+    ease: 'power3.out',
+});
+gsap.from('.project', {
+    scrollTrigger: {
+        trigger: '#projects',
+        start: 'top bottom',
     },
     scale: 0,
     duration: 0.3,

@@ -1,3 +1,9 @@
+export interface copyI {
+    description: string
+    jobs: jobI[]
+    projects: project_t[]
+}
+
 export interface jobI {
     company: string
     position: string
@@ -7,7 +13,9 @@ export interface jobI {
     technologies: string[]
 }
 
-export const copy = {
+const owner = 'xanderazuaje'
+
+export const copy: copyI = {
     description: "👋 Hi, I'm Xander, a Software Developer with 2+ years of experience. Passionate about problem-solving in IT, I'm honing my skills at 42 Madrid. Eager to apply my knowledge and enthusiasm to your team!",
     jobs: [
         {
@@ -45,4 +53,72 @@ export const copy = {
             ],
         }
     ],
+    projects: [
+        setProjectTemplate({
+            title: 'FDF',
+            description: 'A 3D wireframe renderer for maps in C',
+            repoName: 'fdf_42',
+            technologies: [
+                "C",
+                "MinilibX",
+                "Makefile",
+            ],
+        }),
+        setProjectTemplate({
+            title: 'Get Next Line',
+            description: 'A function that returns a line read from a file descriptor',
+            repoName: 'get-next-line42',
+            technologies: [
+                "C",
+                "Makefile",
+            ],
+        }),
+        setProjectTemplate({
+            title: 'Calling app',
+            description: 'A web app to make calls between users',
+            repoName: 'calling-app',
+            technologies: [
+                "React, NodeJS, Socket.io (JavaScript)",
+                "WebRTC",
+                "Figma",
+            ],
+        }),
+        setProjectTemplate({
+            title: 'Personal website',
+            description: 'My personal website',
+            repoName: 'personal-website',
+            technologies: [
+                "Preact",
+                "TypeScript",
+                "Astro",
+                "CSS",
+                "Vite",
+            ],
+        }),
+    ],
+}
+
+export type project_t = {
+    title: string
+    description: string
+    technologies: string[]
+    url: string
+    image: string
+}
+
+interface setProjectTemplateI {
+    title: string
+    description: string
+    repoName: string
+    technologies: string[]
+}
+
+function setProjectTemplate({ title, description, repoName, technologies} : setProjectTemplateI): project_t{
+    return {
+        title,
+        description,
+        technologies,
+        url: `https://github.com/${owner}/${repoName}`,
+        image: `https://opengraph.githubassets.com/1a/${owner}/${repoName}`,
+    }
 }
