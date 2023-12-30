@@ -1,0 +1,25 @@
+---
+export interface AstroProps {
+    title: string;
+}
+const { title, number } = Astro.props;
+---
+
+<div class="separator" id={`separator-${number}`}>
+    <h2>{title}</h2>
+</div>
+
+<style>
+    div {
+        background-color: var(--buttons----secondary);
+        margin: 2.5rem 0;
+        width: 100%;
+        padding: 0 3rem;
+    }
+    h2 {
+        font-size: var(--h3);
+        font-family: var(--heading);
+        color: var(--text);
+        text-align: center;
+    }
+</style>

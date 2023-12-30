@@ -36,7 +36,7 @@ const { title, description } = Astro.props;
         transform-origin: bottom center;
     }
     #greeter{
-        transition: height 0.3s cubic-bezier(.47,1.64,.41,.8);
+        transition: height 0.3s var(--bounce);
     }
     #title{
         font-size: var(--h3);
@@ -58,7 +58,7 @@ const { title, description } = Astro.props;
         word-break: break-word;
         padding: 1rem;
         padding-top: 3.12rem;
-        transition: all 0.3s cubic-bezier(.47,1.64,.41,.8);
+        transition: all 0.3s var(--bounce);
     }
     #separator{
         width: 100%;
@@ -70,7 +70,7 @@ const { title, description } = Astro.props;
         align-items: center;
         gap: 0.6rem;
         color: var(--buttons----primary);
-        transition: all 0.3s cubic-bezier(.47,1.64,.41,.8);
+        transition: all 0.3s var(--bounce);
     }
     #separator hr{
         width: 100%;

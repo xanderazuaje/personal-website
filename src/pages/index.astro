@@ -3,8 +3,11 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
 import Greeter from '../components/Greeter.astro';
+import Separator from '../components/Separator.astro';
+import Job from '../components/Job.tsx';
 
-import copy from '../utils/copy';
+import { copy } from '../utils/copy';
+import type { jobI } from '../utils/copy';
 ---
 
 <Layout title="Developer Xander Azuaje">
@@ -13,34 +16,84 @@ import copy from '../utils/copy';
         <Hero />
         <Greeter title="About me" description={copy.description} />
     </main>
+    <Separator title="Job Experience" number="1" />
+    <section id="job-experience">
+        {copy.jobs.map((job:jobI) => (
+            <Job
+                company={job.company}
+                position={job.position}
+                date={job.date}
+                logo={job.logo}
+                accomplishments={job.accomplishments}
+                technologies={job.technologies}
+                client:load
+            />
+        ))}
+    </section>
 </Layout>
 
 <style>
     #splash {
-        padding-top: 30vh;
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
         align-items: center;
         justify-content: space-between;
         height: 100vh;
     }
+    #job-experience {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        justify-items: center;
+        grid-gap: 1rem;
+        padding: 0 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
 </style>
 
 <script>
-    import gsap from 'gsap';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
-    const tl = gsap.timeline();
+gsap.registerPlugin(ScrollTrigger);
 
-    tl.from('#hero', {
-        y: -150,
-        duration: 1,
-        opacity: 0,
-        ease: 'power3.out',
-    });
-    tl.from('#greeter', {
-        y: 150,
-        duration: 1,
-        opacity: 0,
-        ease: 'power3.out',
-    }, 0.3);
+// Animate Hero
+gsap.from('#hero', {
+    scrollTrigger: '#hero', // start the animation when '#hero' enters the viewport
+    y: -150,
+    duration: 0.3,
+    opacity: 0,
+    ease: 'power3.out',
+});
+
+// Animate Greeter
+gsap.from('#greeter', {
+    scrollTrigger: '#greeter', // start the animation when '#greeter' enters the viewport
+    y: 150,
+    duration: 1,
+    opacity: 0,
+    ease: 'power3.out',
+});
+
+// Animate Separator
+gsap.from('#separator-1', {
+    scrollTrigger: '#separator-1', // start the animation when '#separator-1' enters the viewport
+    scaleY: 0,
+    duration: 0.5,
+    opacity: 0,
+    ease: 'power3.out',
+});
+
+// Animate Job Experience
+gsap.from('.job-experience', {
+    scrollTrigger: {
+        trigger: '#job-experience', // start the animation when '#job-experience' enters the viewport
+        start: 'top bottom', // when the top of '#job-experience' hits the bottom of the viewport
+    },
+    scale: 0,
+    duration: 0.3,
+    opacity: 0,
+    ease: 'power3.out',
+    stagger: 0.2,
+});
 </script>

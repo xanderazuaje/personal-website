@@ -1,0 +1,109 @@
+.job-experience {
+    width: 21rem;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+}
+.company {
+    font-size: var(--h5);
+    font-family: var(--heading);
+    color: var(--accent);
+}
+.date {
+    font-size: var(--small);
+}
+ul {
+    padding-left: 2rem;
+    margin-top: 0.5rem;
+}
+.top-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.top-content img {
+    width: 3.125rem;
+    height: 3.125rem;
+    object-fit: contain;
+    border-radius: 0.625rem;
+}
+.bottom-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    margin: 1.88rem 0;
+}
+.bottom-content_copy {
+    display: flex;
+    flex-direction: row;
+}
+.accomplishments, .technologies {
+    height: 20rem;
+    overflow: hidden;
+}
+.acc-head {
+    color: var(--buttons----primary);
+}
+.tech-head {
+    color: var(--accent);
+}
+.hidden {
+    animation: fadeOut 0.3s ease-in-out forwards;
+}
+.shown {
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        max-width: 500px;
+    }
+    100% {
+        opacity: 0;
+        max-width: 0;
+    }
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        max-width: 0px;
+    }
+    100% {
+        opacity: 1;
+        max-width: 500px;
+    }
+}
+.hidden-v {
+    animation: fadeOutV 0.5s ease-in-out forwards;
+}
+.shown-v {
+    animation: fadeInV 0.5s ease-in-out forwards;
+}
+@keyframes fadeOutV {
+    0% {
+        opacity: 1;
+        max-height: 500px;
+    }
+    100% {
+        opacity: 0;
+        max-height: 0;
+    }
+}
+@keyframes fadeInV {
+    0% {
+        opacity: 0;
+        max-height: 0px;
+    }
+    100% {
+        opacity: 1;
+        max-height: 500px;
+    }
+}
+.expand-btn {
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    color: var(--buttons----primary);
+    cursor: pointer;
+}
