@@ -1,0 +1,37 @@
+<nav class="z-20 fixed flex m-auto w-screen text-h5 flex-wrap align-middle justify-between leading-3 border-b border-primary-o25 md:rounded-b-3xl shadow-btnH bg-background">
+    <a class="text-h4 font-heading px-10 py-5" href="/">Xander</a>
+    <input type="checkbox" id="menu" class="hidden">
+    <label for="menu" class="text-primary bg-gradient-to-r from-background from-50% to-primary to-50% absolute right-0 top-0 px-10 py-5 cursor-pointer hover:text-background">
+        Menu
+    </label>
+    <ul class="w-full text-center">
+        <li><a href="#about-me">About me</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="/blog">Blog</a></li>
+    </ul>
+</nav>
+
+<style>
+    label[for="menu"] {
+        background-size: 200% 100%;
+        background-position: left bottom;
+        transition: all 0.4s ease;
+    }
+    label[for="menu"]:hover {
+        background-position: right bottom;
+    }
+    #menu:checked + label[for="menu"] {
+        background-position: right bottom;
+        @apply text-background;
+    }
+    #menu ~ ul > li{
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+    #menu:checked ~ ul > li {
+        max-height: 100px;
+        padding: 15px 0;
+    }
+</style>

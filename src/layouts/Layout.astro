@@ -4,7 +4,6 @@ interface Props {
 }
 
 const { title } = Astro.props;
-import 'normalize.css';
 ---
 
 <!doctype html>
@@ -17,62 +16,10 @@ import 'normalize.css';
 		<meta name="generator" content={Astro.generator} />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Rubik+Mono+One&display=swap" rel="stylesheet">
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="bg-background text-text font-base">
 		<slot />
 	</body>
 </html>
-<style is:global>
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-	:root {
-        /* Color styles */
-        --text: rgba(236, 211, 248, 1);
-        --background: rgba(13, 3, 18, 1);
-        --accent: rgba(223, 38, 96, 1);
-        --container: rgba(236, 211, 248, 0.05);
-        --placeholder: rgba(236, 211, 248, 0.5);
-        --primary-hover: rgba(229, 117, 215, 1);
-        --buttons----primary: rgba(225, 55, 194, 1);
-        --buttons----secondary: rgba(49, 7, 20, 1);
-
-        /* Font styles */
-        --body-font: 'JetBrains Mono', monospace;
-        --heading: 'Rubik Mono One', sans-serif;
-
-        /* Font weights */
-        --bold: 700;
-
-        /* Text-size styles */
-        /* base size: body (16px) */
-        --body: 1rem;
-        --h1: 4.21rem;
-        --h2: 3.16rem;
-        --h3: 2.37rem;
-        --h4: 1.78rem;
-        --h5: 1.33rem;
-        --small: 0.75rem;
-        --body-bold: 1rem;
-
-        /* Effect styles */
-        --button-hover:  0px 0px 10px rgba(236, 211, 248, 0.3);
-
-        /* Animation easing */
-        --bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-	body {
-		font-family: var(--body-font);
-		background-color: var(--background);
-	}
-    .container {
-        background-color: var(--container);
-        padding: 1rem;
-        border-radius: 0.25rem;
-        color: var(--text);
-    }
-</style>
